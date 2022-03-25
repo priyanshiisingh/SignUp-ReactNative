@@ -10,11 +10,11 @@ import SignUp from "./components/SignUp";
 function Body() {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SignUp"
         component={SignUp}
         options={{ headerShown: false }}
-      /> */}
+      />
       <Stack.Screen
         name="Login"
         component={Login}
