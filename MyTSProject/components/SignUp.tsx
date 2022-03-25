@@ -1,22 +1,9 @@
 import React from "react";
 import { StyleSheet, Button, View, TextInput, Text, Alert } from "react-native";
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD0n2Qr2jauIk7zCUTL5QBoA7M-LHAjbfk",
-  authDomain: "reactnativesignup-17007.firebaseapp.com",
-  projectId: "reactnativesignup-17007",
-  storageBucket: "reactnativesignup-17007.appspot.com",
-  messagingSenderId: "144301622420",
-  appId: "1:144301622420:web:6b9d358ef386c655146081",
-  measurementId: "G-232RK0CQSY",
-};
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../database/Firestore";
 
 const SignUp = () => {
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
-
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
@@ -35,7 +22,7 @@ const SignUp = () => {
           .catch((err) => {
             Alert.alert(err.message);
           });
-        Alert.alert("User Registered!");
+        Alert.alert("User Registered Successfully!");
       } catch (error) {
         Alert.alert(error);
       }

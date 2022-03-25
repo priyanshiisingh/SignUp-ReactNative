@@ -1,25 +1,54 @@
 import React from "react";
 import { StyleSheet, TextInput, View, Button, Alert } from "react-native";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../database/Firestore";
 
 const Login = () => {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
+  const [loading, setLoading] = React.useState(false);
+
+  const loginUser = () => {
+    if (email === "" && password === "") {
+      Alert.alert("Please input credentials");
+    } else {
+      setLoading(true);
+      try {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+          })
+          .catch((err) => {
+            Alert.alert(err.message);
+          });
+        Alert.alert("User Logged In!");
+      } catch (error) {
+        Alert.alert(error);
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.inputTop}
-        onChangeText={setEmail}
+        onChangeText={(UserEmail) => setEmail(UserEmail)}
         value={email}
         placeholder="Email"
       />
       <TextInput
         style={styles.inputBottom}
         onChangeText={setPassword}
+        onChangeText={(UserPassword) => setPassword(UserPassword)}
         value={password}
         placeholder="Password"
       />
-      <Button title="Login" onPress={() => Alert.alert("Button Pressed")} />
+      <Button
+        title="Login"
+        onPress={() => {
+          loginUser();
+        }}
+      />
     </View>
   );
 };
