@@ -24,17 +24,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#4a7140",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontWeight: "bold",
-    fontSize: 30,
-    color: "#e9972d",
-  },
-});

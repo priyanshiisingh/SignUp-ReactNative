@@ -1,36 +1,61 @@
 import React from "react";
 import { StyleSheet, Button, View, TextInput, Text, Alert } from "react-native";
+import { auth } from "../database/FireStore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
+  const [loading, setLoading] = React.useState(false);
+
+  updateInputVal = (val, prop) => {
+    const [state, setState] = React.useState();
+    state[prop] = val;
+    setState(state);
+  };
+
+  const registerUser = () => {
+    if (email === "" && password === "") {
+      Alert.alert("Please input credentials");
+    } else {
+      setLoading(true);
+
+      auth.createUserWithEmailAndPassword(email, password).then((res) => {
+        res.user.updateProfile({
+          displayName: name,
+        });
+        console.log("User resgistered successfully");
+      });
+    }
+  };
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.inputTop}
-        setText={setName}
-        value={name}
+        onChangeText={(UserName) => setName(UserName)}
         placeholder="Name"
       />
       <TextInput
         style={styles.input}
-        setText={setEmail}
-        value={email}
+        onChangeText={(UserEmail) => setEmail(UserEmail)}
         placeholder="Email"
+        keyboardType="email-address"
       />
       <TextInput
         style={styles.inputBottom}
         secureTextEntry={true}
-        setText={setPassword}
-        value={password}
+        onChangeText={(UserPassword) => setPassword(UserPassword)}
         placeholder="Password"
       />
       <Button
         style={styles.button}
         title="Sign Up"
-        onPress={() => Alert.alert("Button Pressed")}
+        onPress={(e) => {
+          Alert.alert("User Registered");
+          registerUser();
+        }}
       />
       <Text style={styles.loginText}>
         Already Registered? Click here to login

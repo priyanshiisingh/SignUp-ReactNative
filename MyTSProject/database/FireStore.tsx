@@ -1,8 +1,16 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// import { getFirestore } from "firebase/firestore";
+// import {
+//   getAuth,
+//   createUserWithEmailAndPassword,
+//   signInWithPopup,
+//   GoogleAuthProvider,
+// } from "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,12 +27,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const app = initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
-export const db = getFirestore(app);
+// export const db = getFirestore(app);
+const db = firebaseApp.firestore();
 //We’ll import db anytime we need to access the database.
-export const auth = getAuth();
+// export const auth =  getAuth();
+const auth = firebase.auth();
 //We’ll import auth anytime we need to authenticate with Firebase.
-export const provider = new GoogleAuthProvider();
+// export const provider = new GoogleAuthProvider();
 //We’ll import provider anytime we need to authenticate with Google.
+
+export { auth };
