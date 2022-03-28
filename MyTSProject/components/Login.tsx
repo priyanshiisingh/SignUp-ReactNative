@@ -2,8 +2,11 @@ import React from "react";
 import { StyleSheet, TextInput, View, Button, Alert } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./Home";
 
-const Login = () => {
+function Login({ navigation }) {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
   const [loading, setLoading] = React.useState(false);
@@ -47,11 +50,12 @@ const Login = () => {
         title="Login"
         onPress={() => {
           loginUser();
+          navigation.navigate(Home);
         }}
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

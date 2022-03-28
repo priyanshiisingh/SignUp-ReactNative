@@ -2,8 +2,11 @@ import React from "react";
 import { StyleSheet, Button, View, TextInput, Text, Alert } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Login from "./Login";
 
-const SignUp = () => {
+function SignUp({ navigation }) {
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
@@ -56,14 +59,15 @@ const SignUp = () => {
         title="Sign Up"
         onPress={() => {
           registerUser();
+          navigation.navigate(Login);
         }}
       />
-      <Text style={styles.loginText}>
+      <Text style={styles.loginText} onPress={() => navigation.navigate(Login)}>
         Already Registered? Click here to login
       </Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
