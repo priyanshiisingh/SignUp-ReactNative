@@ -23,7 +23,6 @@ function Login({ navigation }) {
             const user = userCredential.user;
             const cDName = cUser.displayName;
             user.displayName = cDName;
-
             Alert.alert("User Logged In!");
             navigation.navigate("Home");
           })
