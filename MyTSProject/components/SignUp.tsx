@@ -24,7 +24,18 @@ function SignUp({ navigation }) {
             navigation.navigate("Login");
           })
           .catch((err) => {
-            Alert.alert(err.message);
+            if (err.code === "auth/email-already-in-use") {
+              Alert.alert("Email already in use. Please Login.");
+            } else if (err.code === "auth/internal-error") {
+              Alert.alert("Please check email and password.");
+            } else if (err.code === "auth/missing-email") {
+              Alert.alert("Please enter email.");
+            } else if (err.code === "auth/invalid-email") {
+              Alert.alert("Please enter valid email address.");
+            } else if (err.code === "auth/weak-password") {
+              Alert.alert("Password should be atleast 6 characters.");
+            }
+            console.log(err.message);
           });
       } catch (error) {
         Alert.alert(error);

@@ -23,7 +23,16 @@ function Login({ navigation }) {
             navigation.navigate("Home");
           })
           .catch((err) => {
-            Alert.alert(err.message);
+            if (err.code === "auth/wrong-password") {
+              Alert.alert("Incorrect password. Please try again.");
+            } else if (err.code === "auth/user-not-found") {
+              Alert.alert("User not found. Please check your credentials.");
+            } else if (err.code === "auth/invalid-email") {
+              Alert.alert("Please enter valid email address.");
+            } else if (err.code === "auth/internal-error") {
+              Alert.alert("Please check email and password.");
+            }
+            console.log(err.message);
           });
       } catch (error) {
         Alert.alert(error);
