@@ -9,7 +9,7 @@ function Home({ navigation }) {
 
   if (user !== null) {
     // The user object has basic properties such as display name, email, etc.
-    const Lname = user.name;
+    const Lname = user.displayName;
     const Lemail = user.email;
 
     // The user's ID, unique to the Firebase project. Do NOT use
@@ -20,11 +20,16 @@ function Home({ navigation }) {
       <View style={styles.container}>
         <Text style={styles.text}>Welcome Home!</Text>
 
-        <Text style={styles.text}>{Lname}</Text>
+        <Text style={styles.text}>User name : {Lname}</Text>
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
 
-        <Button title="Logout" onPress={() => navigation.navigate("SignUp")} />
+        <Button
+          title="Logout"
+          onPress={() => {
+            navigation.navigate("SignUp");
+          }}
+        />
       </View>
     );
   } else {

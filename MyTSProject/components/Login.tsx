@@ -6,9 +6,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 function Login({ navigation }) {
+  const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
   const [loading, setLoading] = React.useState(false);
+  const cUser = auth.currentUser;
 
   const loginUser = () => {
     if (email === "" && password === "") {
@@ -19,6 +21,9 @@ function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            const cDName = cUser.displayName;
+            user.displayName = cDName;
+
             Alert.alert("User Logged In!");
             navigation.navigate("Home");
           })
@@ -86,6 +91,15 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    borderColor: "white",
+    width: "80%",
+    padding: 10,
+    marginBottom: "5%",
+  },
+  input: {
+    backgroundColor: "white",
+    height: 40,
+    borderWidth: 3,
     borderColor: "white",
     width: "80%",
     padding: 10,

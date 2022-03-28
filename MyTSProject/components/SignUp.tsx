@@ -9,6 +9,7 @@ function SignUp({ navigation }) {
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
+  const [cpass, setCpass] = React.useState();
   const [loading, setLoading] = React.useState(false);
 
   const registerUser = () => {
@@ -20,6 +21,8 @@ function SignUp({ navigation }) {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            user.displayName = name;
+
             Alert.alert("User Registered Successfully!");
             navigation.navigate("Login");
           })
