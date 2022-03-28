@@ -4,7 +4,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from "./Login";
 
 function SignUp({ navigation }) {
   const [name, setName] = React.useState();
@@ -21,11 +20,12 @@ function SignUp({ navigation }) {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            Alert.alert("User Registered Successfully!");
+            navigation.navigate("Login");
           })
           .catch((err) => {
             Alert.alert(err.message);
           });
-        Alert.alert("User Registered Successfully!");
       } catch (error) {
         Alert.alert(error);
       }
@@ -59,11 +59,12 @@ function SignUp({ navigation }) {
         title="Sign Up"
         onPress={() => {
           registerUser();
-          navigation.navigate(Login);
         }}
       />
-      <Text style={styles.loginText} onPress={() => navigation.navigate(Login)}>
-        Already Registered? Click here to login
+      <Text
+        style={styles.loginText}
+        onPress={() => navigation.navigate("Login")}>
+        Already Registered? Click here to login!
       </Text>
     </View>
   );

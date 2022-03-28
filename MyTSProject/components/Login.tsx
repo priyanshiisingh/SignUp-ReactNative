@@ -1,10 +1,9 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Button, Alert } from "react-native";
+import { StyleSheet, TextInput, View, Button, Alert, Text } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "./Home";
 
 function Login({ navigation }) {
   const [email, setEmail] = React.useState();
@@ -20,11 +19,12 @@ function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            Alert.alert("User Logged In!");
+            navigation.navigate("Home");
           })
           .catch((err) => {
             Alert.alert(err.message);
           });
-        Alert.alert("User Logged In!");
       } catch (error) {
         Alert.alert(error);
       }
@@ -37,22 +37,27 @@ function Login({ navigation }) {
         style={styles.inputTop}
         onChangeText={(UserEmail) => setEmail(UserEmail)}
         value={email}
+        keyboardType="email-address"
         placeholder="Email"
       />
       <TextInput
         style={styles.inputBottom}
-        onChangeText={setPassword}
         onChangeText={(UserPassword) => setPassword(UserPassword)}
         value={password}
+        secureTextEntry={true}
         placeholder="Password"
       />
       <Button
         title="Login"
         onPress={() => {
           loginUser();
-          navigation.navigate(Home);
         }}
       />
+      <Text
+        style={styles.loginText}
+        onPress={() => navigation.navigate("SignUp")}>
+        Don't have an account yet? Click here to SignUp!
+      </Text>
     </View>
   );
 }
@@ -85,6 +90,11 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     borderColor: "white",
+  },
+  loginText: {
+    color: "white",
+    marginTop: 25,
+    textAlign: "center",
   },
 });
 
