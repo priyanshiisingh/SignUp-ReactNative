@@ -31,6 +31,8 @@ function Login({ navigation }) {
               Alert.alert("Please enter valid email address.");
             } else if (err.code === "auth/internal-error") {
               Alert.alert("Please check email and password.");
+            } else if (err.code === "auth/missing-email") {
+              Alert.alert("Please enter email.");
             }
             console.log(err.message);
           });
