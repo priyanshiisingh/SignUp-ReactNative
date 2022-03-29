@@ -1,5 +1,13 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Button, Alert, Text } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Button,
+  Alert,
+  Text,
+  Pressable,
+} from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
@@ -62,12 +70,14 @@ function Login({ navigation }) {
         secureTextEntry={true}
         placeholder="Password"
       />
-      <Button
-        title="Login"
+      <Pressable
+        style={styles.button}
         onPress={() => {
           loginUser();
-        }}
-      />
+        }}>
+        <Text style={styles.buttonText}>Login</Text>
+      </Pressable>
+
       <Text
         style={styles.loginText}
         onPress={() => navigation.navigate("SignUp")}>
@@ -118,6 +128,20 @@ const styles = StyleSheet.create({
   loginText: {
     color: "white",
     marginTop: 25,
+    textAlign: "center",
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    width: "80%",
+    backgroundColor: "black",
+  },
+  buttonText: {
+    color: "white",
     textAlign: "center",
   },
 });

@@ -1,5 +1,14 @@
 import React from "react";
-import { StyleSheet, Button, View, TextInput, Text, Alert } from "react-native";
+import {
+  StyleSheet,
+  Button,
+  Pressable,
+  View,
+  TextInput,
+  Text,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
@@ -37,6 +46,8 @@ function SignUp({ navigation }) {
                 Alert.alert("Please enter valid email address.");
               } else if (err.code === "auth/weak-password") {
                 Alert.alert("Password should be atleast 6 characters.");
+              } else if (err.code === "auth/admin-restricted-operation") {
+                Alert.alert("Admin Restricted Operation.");
               }
               console.log(err.message);
             });
@@ -80,13 +91,22 @@ function SignUp({ navigation }) {
         placeholder="Confirm Password"
         value={cpass}
       />
-      <Button
+      <Pressable
         style={styles.button}
-        title="Sign Up"
         onPress={() => {
           registerUser();
-        }}
-      />
+        }}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </Pressable>
+      <TouchableOpacity
+        onPress={() => {
+          setName("");
+          setEmail("");
+          setPassword("");
+          setCpass("");
+        }}>
+        <Text style={styles.loginText}>Clear</Text>
+      </TouchableOpacity>
       <Text
         style={styles.loginText}
         onPress={() => navigation.navigate("Login")}>
@@ -134,12 +154,24 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     borderColor: "white",
   },
-  button: {
-    width: "100%",
-  },
+
   loginText: {
     color: "white",
     marginTop: 25,
+    textAlign: "center",
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    width: "80%",
+    backgroundColor: "black",
+  },
+  buttonText: {
+    color: "white",
     textAlign: "center",
   },
 });
