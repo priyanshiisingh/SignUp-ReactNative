@@ -1,10 +1,37 @@
-import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useRef, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  DrawerLayoutAndroid,
+} from "react-native";
 import { auth } from "../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 function Home({ navigation }) {
+  // const drawer = useRef(null);
+  // const [drawerPosition, setDrawerPosition] = useState("left");
+  // const changeDrawerPosition = () => {
+  //   if (drawerPosition === "left") {
+  //     setDrawerPosition("right");
+  //   } else {
+  //     setDrawerPosition("left");
+  //   }
+  // };
+  // const navigationView = () => (
+  //   <View style={[styles.container, styles.navigationContainer]}>
+  //     <Text style={styles.paragraph}>I'm in the Drawer!</Text>
+  //     <Button
+  //       title="Close drawer"
+  //       onPress={() => drawer.current.closeDrawer()}
+  //     />
+  //   </View>
+  // );
+
+  const Drawer = createDrawerNavigator();
   const user = auth.currentUser;
 
   if (user !== null) {
@@ -18,6 +45,12 @@ function Home({ navigation }) {
     const Luid = user.uid;
     return (
       <View style={styles.container}>
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Home">
+            <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="SignUp" component={SignUp} />
+          </Drawer.Navigator>
+        </NavigationContainer>
         <Text style={styles.text}>Welcome Home!</Text>
 
         <Text style={styles.text}>User name : {Lname}</Text>
