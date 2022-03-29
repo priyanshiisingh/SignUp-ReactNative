@@ -27,6 +27,7 @@ function Home({ navigation }) {
         <Button
           title="Logout"
           onPress={() => {
+            auth.signOut();
             navigation.navigate("SignUp");
           }}
         />
