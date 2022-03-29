@@ -18,28 +18,33 @@ function SignUp({ navigation }) {
     } else {
       setLoading(true);
       try {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            user.displayName = name;
-
-            Alert.alert("User Registered Successfully!");
-            navigation.navigate("Login");
-          })
-          .catch((err) => {
-            if (err.code === "auth/email-already-in-use") {
-              Alert.alert("Email already in use. Please Login.");
-            } else if (err.code === "auth/internal-error") {
-              Alert.alert("Please check email and password.");
-            } else if (err.code === "auth/missing-email") {
-              Alert.alert("Please enter email.");
-            } else if (err.code === "auth/invalid-email") {
-              Alert.alert("Please enter valid email address.");
-            } else if (err.code === "auth/weak-password") {
-              Alert.alert("Password should be atleast 6 characters.");
-            }
-            console.log(err.message);
-          });
+        if (cpass === password) {
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              user.displayName = name;
+              Alert.alert("User Registered Successfully!");
+              navigation.navigate("Login");
+            })
+            .catch((err) => {
+              if (err.code === "auth/email-already-in-use") {
+                Alert.alert("Email already in use. Please Login.");
+              } else if (err.code === "auth/internal-error") {
+                Alert.alert("Please check email and password.");
+              } else if (err.code === "auth/missing-email") {
+                Alert.alert("Please enter email.");
+              } else if (err.code === "auth/invalid-email") {
+                Alert.alert("Please enter valid email address.");
+              } else if (err.code === "auth/weak-password") {
+                Alert.alert("Password should be atleast 6 characters.");
+              }
+              console.log(err.message);
+            });
+        } else {
+          Alert.alert(
+            "Confirm password and password should be same. Please try again."
+          );
+        }
       } catch (error) {
         Alert.alert(error);
       }
@@ -62,11 +67,18 @@ function SignUp({ navigation }) {
         value={email}
       />
       <TextInput
-        style={styles.inputBottom}
+        style={styles.input}
         secureTextEntry={true}
         onChangeText={(UserPassword) => setPassword(UserPassword)}
         placeholder="Password"
         value={password}
+      />
+      <TextInput
+        style={styles.inputBottom}
+        secureTextEntry={true}
+        onChangeText={(UserCPassword) => setCpass(UserCPassword)}
+        placeholder="Confirm Password"
+        value={cpass}
       />
       <Button
         style={styles.button}
