@@ -8,7 +8,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "../database/Firestore";
 import Home from "./Home";
-import Login from "./Login";
+import Master from "./Master";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Drawer() {
@@ -19,6 +19,11 @@ function Drawer() {
         name="Home"
         component={Home}
         options={{ drawerLabel: "Home" }}
+      />
+      <Drawer.Screen
+        name="Master"
+        component={Master}
+        options={{ drawerLabel: "Logout", headerShown: false }}
       />
     </Drawer.Navigator>
   );
