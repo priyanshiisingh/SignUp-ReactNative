@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  DrawerLayoutAndroid,
-} from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
   DrawerContentScrollView,
@@ -25,16 +19,6 @@ function Drawer() {
         name="Home"
         component={Home}
         options={{ drawerLabel: "Home" }}
-      />
-      <Drawer.Screen
-        name="Login"
-        component={Login}
-        options={{ drawerLabel: "Logout", headerShown: false }}
-        onPress={() => {
-          auth.signOut();
-          AsyncStorage.clear();
-          navigation.goBack();
-        }}
       />
     </Drawer.Navigator>
   );
