@@ -1,12 +1,21 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ImageBackground,
+} from "react-native";
 import Login from "./Login";
 import SignUp from "./SignUp";
 
 export default function Master({ navigation }) {
+  const image = {
+    uri: "https://images.unsplash.com/photo-1564352969906-8b7f46ba4b8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+  };
   return (
-    <View style={styles.container}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
       <Text style={styles.text}>Welcome!</Text>
       <Pressable
         style={styles.button}
@@ -22,14 +31,13 @@ export default function Master({ navigation }) {
         }}>
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  image: {
     flex: 1,
-    backgroundColor: "#4a7140",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -38,15 +46,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
+    borderRadius: 25,
+    elevation: 4,
     width: "80%",
-    backgroundColor: "black",
-    marginBottom: 5,
+    backgroundColor: "#b7094c",
+    marginBottom: 10,
   },
   buttonText: {
     color: "white",
     textAlign: "center",
+    fontSize: 18,
   },
-  text: { color: "white", textAlign: "center", fontSize: 50, marginBottom: 20 },
+  text: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 50,
+    marginBottom: 20,
+  },
 });

@@ -7,6 +7,7 @@ import {
   Alert,
   Text,
   Pressable,
+  ImageBackground,
 } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../database/Firestore";
@@ -14,6 +15,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 function Login({ navigation }) {
+  const image = {
+    uri: "https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=407&q=80",
+  };
+
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
@@ -54,7 +59,7 @@ function Login({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
       <TextInput
         style={styles.inputTop}
         onChangeText={(UserEmail) => setEmail(UserEmail)}
@@ -80,16 +85,15 @@ function Login({ navigation }) {
       <Text
         style={styles.loginText}
         onPress={() => navigation.navigate("SignUp")}>
-        Don't have an account yet? Click here to SignUp!
+        Don't have an account yet?{"\n"} Click here to SignUp!
       </Text>
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  image: {
     flex: 1,
-    backgroundColor: "#4a7140",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -99,16 +103,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    borderColor: "white",
-    width: "80%",
-    padding: 10,
-    marginBottom: "5%",
-  },
-  input: {
-    backgroundColor: "white",
-    height: 40,
-    borderWidth: 3,
-    borderColor: "white",
+    borderColor: "grey",
     width: "80%",
     padding: 10,
     marginBottom: "5%",
@@ -122,12 +117,17 @@ const styles = StyleSheet.create({
     marginBottom: "5%",
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    borderColor: "white",
+    borderColor: "grey",
   },
   loginText: {
     color: "white",
     marginTop: 25,
     textAlign: "center",
+    backgroundColor: "black",
+    width: "80%",
+    lineHeight: 25,
+    padding: 4,
+    borderRadius: 30,
   },
   button: {
     alignItems: "center",
@@ -135,13 +135,14 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 4,
-    elevation: 3,
+    elevation: 4,
     width: "80%",
-    backgroundColor: "black",
+    backgroundColor: "#b7094c",
   },
   buttonText: {
     color: "white",
     textAlign: "center",
+    fontSize: 18,
   },
 });
 

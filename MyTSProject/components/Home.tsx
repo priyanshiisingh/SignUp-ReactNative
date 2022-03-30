@@ -58,12 +58,12 @@ function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4a7140",
+    backgroundColor: "#f8f9fa",
     alignItems: "center",
     justifyContent: "center",
   },
   text: {
-    color: "white",
+    color: "black",
     marginBottom: "5%",
   },
   drawer: {
