@@ -7,6 +7,7 @@ import SignUp from "./SignUp";
 export default function Master({ navigation }) {
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Welcome!</Text>
       <Pressable
         style={styles.button}
         onPress={() => {
@@ -47,4 +48,5 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
   },
+  text: { color: "white", textAlign: "center", fontSize: 50, marginBottom: 20 },
 });
