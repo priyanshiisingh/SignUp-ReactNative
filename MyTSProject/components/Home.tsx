@@ -7,8 +7,9 @@ import {
   DrawerLayoutAndroid,
 } from "react-native";
 import { auth } from "../database/Firestore";
-
-import Login from "./components/Login";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Login from "./Login";
+import { NavigationContainer } from "@react-navigation/native";
 
 function Home({ navigation }) {
   const user = auth.currentUser;
@@ -54,6 +55,10 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     marginBottom: "5%",
+  },
+  drawer: {
+    borderColor: "black",
+    borderWidth: 3,
   },
 });
 

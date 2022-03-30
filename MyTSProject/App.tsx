@@ -7,6 +7,7 @@ const Stack = createNativeStackNavigator();
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Drawer from "./components/Drawer";
 
 function Body() {
   return (
@@ -21,9 +22,14 @@ function Body() {
         component={Login}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home"
         component={Home}
+        options={{ headerShown: false }}
+      /> */}
+      <Stack.Screen
+        name="Drawer"
+        component={Drawer}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

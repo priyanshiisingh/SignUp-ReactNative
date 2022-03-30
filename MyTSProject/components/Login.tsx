@@ -32,7 +32,7 @@ function Login({ navigation }) {
             // const cDName = cUser.displayName;
             // user.displayName = cDName;
             Alert.alert("User Logged In!");
-            navigation.navigate("Home");
+            navigation.navigate("Drawer");
           })
           .catch((err) => {
             if (err.code === "auth/wrong-password") {
