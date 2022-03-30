@@ -19,7 +19,7 @@ function Home({ navigation }) {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Welcome Home!</Text>
-
+        <Text style={styles.text}>User Name : {Lname}</Text>
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
 

@@ -9,7 +9,7 @@ import {
   Alert,
   TouchableOpacity,
 } from "react-native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -29,9 +29,10 @@ function SignUp({ navigation }) {
       try {
         if (cpass === password) {
           createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(async (userCredential) => {
               const user = userCredential.user;
-              user.displayName = name;
+              await updateProfile(auth.currentUser, { displayName: name });
+
               Alert.alert("User Registered Successfully!");
               navigation.navigate("Login");
             })

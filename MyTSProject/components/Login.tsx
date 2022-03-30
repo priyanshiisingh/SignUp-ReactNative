@@ -29,14 +29,6 @@ function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            // if (cUser.displayName === "null") {
-            //   cUser.displayName = "unknown";
-            //   user.displayName = cUser.displayName;
-            // } else {
-            //   const cDName = cUser.displayName;
-            //   user.displayName = cDName;
-            // }
-            // console.log(user.displayName);
             Alert.alert("User Logged In!");
 
             navigation.navigate("Drawer");
