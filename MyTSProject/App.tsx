@@ -8,10 +8,16 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Drawer from "./components/Drawer";
+import Master from "./components/Master";
 
 function Body() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Master"
+        component={Master}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="SignUp"
         component={SignUp}
