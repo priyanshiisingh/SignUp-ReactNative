@@ -7,9 +7,15 @@ import {
   DrawerLayoutAndroid,
 } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Login from "./Login";
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import { auth } from "../database/Firestore";
 import Home from "./Home";
+import Login from "./Login";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Drawer() {
   const Drawer = createDrawerNavigator();
@@ -19,6 +25,16 @@ function Drawer() {
         name="Home"
         component={Home}
         options={{ drawerLabel: "Home" }}
+      />
+      <Drawer.Screen
+        name="Login"
+        component={Login}
+        options={{ drawerLabel: "Logout", headerShown: false }}
+        onPress={() => {
+          auth.signOut();
+          AsyncStorage.clear();
+          navigation.goBack();
+        }}
       />
     </Drawer.Navigator>
   );

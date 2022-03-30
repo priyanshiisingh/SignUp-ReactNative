@@ -1,15 +1,8 @@
 import React, { useRef, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  DrawerLayoutAndroid,
-} from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { auth } from "../database/Firestore";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import Login from "./Login";
-import { NavigationContainer } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Home({ navigation }) {
   const user = auth.currentUser;
@@ -27,7 +20,6 @@ function Home({ navigation }) {
       <View style={styles.container}>
         <Text style={styles.text}>Welcome Home!</Text>
 
-        <Text style={styles.text}>User name : {Lname}</Text>
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
 
@@ -35,7 +27,8 @@ function Home({ navigation }) {
           title="Logout"
           onPress={() => {
             auth.signOut();
-            navigation.navigate("SignUp");
+            AsyncStorage.clear();
+            navigation.goBack();
           }}
         />
       </View>
