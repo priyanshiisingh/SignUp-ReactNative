@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Alert } from "react-native";
 import { auth } from "../database/Firestore";
 import Login from "./Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -26,9 +26,27 @@ function Home({ navigation }) {
         <Button
           title="Logout"
           onPress={() => {
-            auth.signOut();
-            AsyncStorage.clear();
-            navigation.goBack();
+            Alert.alert(
+              "Logout",
+              "Are you sure you want to logout?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => {
+                    return null;
+                  },
+                },
+                {
+                  text: "Confirm",
+                  onPress: () => {
+                    auth.signOut();
+                    AsyncStorage.clear();
+                    navigation.goBack();
+                  },
+                },
+              ],
+              { cancelable: false }
+            );
           }}
         />
       </View>
