@@ -7,7 +7,9 @@ export const ITEM_WIDTH = SLIDER_WIDTH;
 const CarouselCardItem = ({ item, index }) => {
   return (
     <View style={styles.container} key={index}>
-      <Image source={{ uri: item.imgUrl }} style={styles.image} />
+      <View style={styles.imageBox}>
+        <Image source={{ uri: item.imgUrl }} style={styles.image} />
+      </View>
       <Text style={styles.header}>{item.title}</Text>
       <Text style={styles.body}>{item.body}</Text>
     </View>
@@ -29,8 +31,13 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   image: {
-    width: Math.round(ITEM_WIDTH * 0.7),
-    height: 300,
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
+  },
+  imageBox: {
+    width: "100%",
+    height: 350,
   },
   header: {
     color: "#222",

@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginBottom: 10,
     maxWidth: "80%",
+    lineHeight: 25,
   },
   lineStyle: {
     borderWidth: 0.2,
