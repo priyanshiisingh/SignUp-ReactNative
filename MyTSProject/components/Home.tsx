@@ -29,10 +29,14 @@ function Home({ navigation }) {
         <Text style={styles.helloText}>Hello {Lname}!</Text>
         <Text style={styles.trendText}>Trending</Text>
         <CarouselCards />
-
+        <Text style={styles.trendText}>Movies for you</Text>
+        <CarouselCards />
+        <Text style={styles.trendText}>Music for you</Text>
+        <CarouselCards />
+        <Text style={styles.trendText}>Food for you</Text>
+        <CarouselCards />
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
-        <CarouselCards />
       </ScrollView>
     );
   } else {
