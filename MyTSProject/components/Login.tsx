@@ -23,7 +23,6 @@ function Login({ navigation }) {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
   const [loading, setLoading] = React.useState(false);
-  const cUser = auth.currentUser;
 
   const loginUser = () => {
     if (email === "" && password === "") {

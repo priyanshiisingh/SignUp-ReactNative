@@ -18,36 +18,9 @@ function Home({ navigation }) {
     const Luid = user.uid;
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Welcome {Lname}!</Text>
+        <Text style={styles.helloText}>Hello {Lname}!</Text>
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
-
-        <Button
-          title="Logout"
-          onPress={() => {
-            Alert.alert(
-              "Logout",
-              "Are you sure you want to logout?",
-              [
-                {
-                  text: "Cancel",
-                  onPress: () => {
-                    return null;
-                  },
-                },
-                {
-                  text: "Confirm",
-                  onPress: () => {
-                    auth.signOut();
-                    AsyncStorage.clear();
-                    navigation.goBack();
-                  },
-                },
-              ],
-              { cancelable: false }
-            );
-          }}
-        />
       </View>
     );
   } else {
@@ -59,12 +32,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f8f9fa",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 30,
   },
   text: {
     color: "black",
     marginBottom: "5%",
+  },
+  helloText: {
+    color: "black",
+    marginBottom: "5%",
+    fontSize: 35,
   },
   drawer: {
     borderColor: "black",

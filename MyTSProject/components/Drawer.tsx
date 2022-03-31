@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
   DrawerContentScrollView,
@@ -11,19 +18,45 @@ import Home from "./Home";
 import Master from "./Master";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function Drawer() {
+function Drawer({ navigation }) {
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen
         name="Home"
         component={Home}
-        options={{ drawerLabel: "Home" }}
-      />
-      <Drawer.Screen
-        name="Master"
-        component={Master}
-        options={{ drawerLabel: "Logout", headerShown: false }}
+        options={{
+          drawerLabel: "Home",
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 30 }}
+              onPress={() => {
+                Alert.alert(
+                  "Logout",
+                  "Are you sure you want to logout?",
+                  [
+                    {
+                      text: "Cancel",
+                      onPress: () => {
+                        return null;
+                      },
+                    },
+                    {
+                      text: "Confirm",
+                      onPress: () => {
+                        auth.signOut();
+                        AsyncStorage.clear();
+                        navigation.goBack();
+                      },
+                    },
+                  ],
+                  { cancelable: false }
+                );
+              }}>
+              <Text>Logout</Text>
+            </TouchableOpacity>
+          ),
+        }}
       />
     </Drawer.Navigator>
   );
