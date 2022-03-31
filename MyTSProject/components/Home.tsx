@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, Alert } from "react-native";
 import { auth } from "../database/Firestore";
 import Login from "./Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import CarouselCards from "./Carousel/CarouselCards";
 
 function Home({ navigation }) {
   const user = auth.currentUser;
@@ -19,6 +20,9 @@ function Home({ navigation }) {
     return (
       <View style={styles.container}>
         <Text style={styles.helloText}>Hello {Lname}!</Text>
+        <Text style={styles.trendText}>Trending</Text>
+        <CarouselCards />
+
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
       </View>
@@ -36,12 +40,18 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
-    marginBottom: "5%",
+    marginTop: "5%",
   },
   helloText: {
     color: "black",
     marginBottom: "5%",
-    fontSize: 35,
+    fontWeight: "bold",
+    fontSize: 37,
+  },
+  trendText: {
+    color: "black",
+    marginBottom: "5%",
+    fontSize: 25,
   },
   drawer: {
     borderColor: "black",
