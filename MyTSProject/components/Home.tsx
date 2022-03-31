@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet, Text, View, Button, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ScrollView,
+  Alert,
+} from "react-native";
 import { auth } from "../database/Firestore";
 import Login from "./Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -18,14 +25,15 @@ function Home({ navigation }) {
     // you have one. Use User.getToken() instead.
     const Luid = user.uid;
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
         <Text style={styles.helloText}>Hello {Lname}!</Text>
         <Text style={styles.trendText}>Trending</Text>
         <CarouselCards />
 
         <Text style={styles.text}>User Email : {Lemail}</Text>
         <Text style={styles.text}>User ID : {Luid}</Text>
-      </View>
+        <CarouselCards />
+      </ScrollView>
     );
   } else {
     console.log("Invalid entry.");
@@ -33,7 +41,7 @@ function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollView: {
     flex: 1,
     backgroundColor: "#f8f9fa",
     padding: 30,

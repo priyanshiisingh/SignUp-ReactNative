@@ -27,6 +27,9 @@ function Drawer({ navigation }) {
         component={Home}
         options={{
           drawerLabel: "Home",
+          headerStyle: {
+            backgroundColor: "transparent", //Set Header color
+          },
           headerRight: () => (
             <TouchableOpacity
               style={{ marginRight: 30 }}
