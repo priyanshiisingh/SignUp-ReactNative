@@ -11,6 +11,7 @@ import { auth } from "../database/Firestore";
 import Login from "./Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import CarouselCards from "./Carousel/CarouselCards";
+import Footer from "./Footer";
 
 function Home({ navigation }) {
   const user = auth.currentUser;
@@ -26,17 +27,18 @@ function Home({ navigation }) {
     const Luid = user.uid;
     return (
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.helloText}>Hello {Lname}!</Text>
-        <Text style={styles.text}>User Email : {Lemail}</Text>
-        <Text style={styles.text}>User ID : {Luid}</Text>
-        <Text style={styles.trendText}>Trending</Text>
-        <CarouselCards />
-        <Text style={styles.trendText}>Movies for you</Text>
-        <CarouselCards />
-        <Text style={styles.trendText}>Music for you</Text>
-        <CarouselCards />
-        <Text style={styles.trendText}>Food for you</Text>
-        <CarouselCards />
+        <View style={styles.view}>
+          <Text style={styles.helloText}>Hello {Lname}!</Text>
+          <Text style={styles.trendText}>Trending</Text>
+          <CarouselCards />
+          <Text style={styles.trendText}>Movies for you</Text>
+          <CarouselCards />
+          <Text style={styles.trendText}>Music for you</Text>
+          <CarouselCards />
+          <Text style={styles.trendText}>Food for you</Text>
+          <CarouselCards />
+        </View>
+        <Footer />
       </ScrollView>
     );
   } else {
@@ -48,8 +50,11 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     backgroundColor: "#f8f9fa",
+  },
+  view: {
     paddingRight: 30,
     paddingLeft: 30,
+    paddingBottom: 30,
   },
   text: {
     color: "black",
@@ -63,6 +68,7 @@ const styles = StyleSheet.create({
   },
   trendText: {
     color: "black",
+    marginTop: "5%",
     marginBottom: "5%",
     fontSize: 25,
   },
