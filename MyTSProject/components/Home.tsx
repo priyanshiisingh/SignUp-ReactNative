@@ -27,6 +27,8 @@ function Home({ navigation }) {
     return (
       <ScrollView style={styles.scrollView}>
         <Text style={styles.helloText}>Hello {Lname}!</Text>
+        <Text style={styles.text}>User Email : {Lemail}</Text>
+        <Text style={styles.text}>User ID : {Luid}</Text>
         <Text style={styles.trendText}>Trending</Text>
         <CarouselCards />
         <Text style={styles.trendText}>Movies for you</Text>
@@ -35,8 +37,6 @@ function Home({ navigation }) {
         <CarouselCards />
         <Text style={styles.trendText}>Food for you</Text>
         <CarouselCards />
-        <Text style={styles.text}>User Email : {Lemail}</Text>
-        <Text style={styles.text}>User ID : {Luid}</Text>
       </ScrollView>
     );
   } else {
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     backgroundColor: "#f8f9fa",
-    padding: 30,
+    paddingRight: 30,
+    paddingLeft: 30,
   },
   text: {
     color: "black",
