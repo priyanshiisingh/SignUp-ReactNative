@@ -16,6 +16,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "../database/Firestore";
 import Home from "./Home";
 import Master from "./Master";
+import Profile from "./Profile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Drawer({ navigation }) {
@@ -27,6 +28,45 @@ function Drawer({ navigation }) {
         component={Home}
         options={{
           drawerLabel: "Home",
+          headerStyle: {
+            backgroundColor: "transparent", //Set Header color
+          },
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 30 }}
+              onPress={() => {
+                Alert.alert(
+                  "Logout",
+                  "Are you sure you want to logout?",
+                  [
+                    {
+                      text: "Cancel",
+                      onPress: () => {
+                        return null;
+                      },
+                    },
+                    {
+                      text: "Confirm",
+                      onPress: () => {
+                        auth.signOut();
+                        AsyncStorage.clear();
+                        navigation.goBack();
+                      },
+                    },
+                  ],
+                  { cancelable: false }
+                );
+              }}>
+              <Text>Logout</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          drawerLabel: "Profile",
           headerStyle: {
             backgroundColor: "transparent", //Set Header color
           },

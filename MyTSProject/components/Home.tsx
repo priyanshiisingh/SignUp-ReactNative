@@ -72,10 +72,6 @@ const styles = StyleSheet.create({
     marginBottom: "5%",
     fontSize: 25,
   },
-  drawer: {
-    borderColor: "black",
-    borderWidth: 3,
-  },
 });
 
 export default Home;
