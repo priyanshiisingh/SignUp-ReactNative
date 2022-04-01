@@ -10,8 +10,8 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "../database/Firestore";
-import Home from "./Home";
-import Profile from "./Profile";
+import Home from "./Pages/Home";
+import Profile from "./Pages/Profile";
 import Posts from "./Posts/Posts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

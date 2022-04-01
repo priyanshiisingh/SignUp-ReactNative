@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
-import Home from "./components/Home";
 import Login from "./components/AuthComps/Login";
 import SignUp from "./components/AuthComps/SignUp";
 import Drawer from "./components/Drawer";
@@ -28,11 +27,6 @@ function Body() {
         component={Login}
         options={{ headerShown: false }}
       />
-      {/* <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      /> */}
       <Stack.Screen
         name="Drawer"
         component={Drawer}

@@ -8,8 +8,8 @@ import {
   Image,
   Alert,
 } from "react-native";
-import { auth } from "../database/Firestore";
-import Footer from "./Footer";
+import { auth } from "../../database/Firestore";
+import Footer from "../Footer";
 
 function Profile({ navigation }) {
   const user = auth.currentUser;

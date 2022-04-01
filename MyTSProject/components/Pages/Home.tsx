@@ -7,17 +7,16 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import { auth } from "../database/Firestore";
-import Login from "./Login";
+import { auth } from "../../database/Firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   TrendingCards,
   MovieCards,
   MusicCards,
   FoodCards,
-} from "./Carousel/Cards";
+} from "../Carousel/Cards";
 
-import Footer from "./Footer";
+import Footer from "../Footer";
 
 function Home({ navigation }) {
   const user = auth.currentUser;
