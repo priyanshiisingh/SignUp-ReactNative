@@ -8,6 +8,7 @@ import Login from "./components/AuthComps/Login";
 import SignUp from "./components/AuthComps/SignUp";
 import Drawer from "./components/Drawer";
 import Master from "./components/AuthComps/Master";
+import Article from "./components/Pages/Article";
 
 function Body() {
   return (
@@ -30,6 +31,11 @@ function Body() {
       <Stack.Screen
         name="Drawer"
         component={Drawer}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Article"
+        component={Article}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

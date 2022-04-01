@@ -1,9 +1,15 @@
 import React from "react";
-import { StyleSheet, View, Text, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+  Pressable,
+} from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 import { Data } from "./Data";
 
-export default function Posts() {
+export default function ExplorePosts({ navigation }) {
   const [items, setItems] = React.useState(Data);
 
   return (
@@ -20,7 +26,12 @@ export default function Posts() {
             source={item.image}
             resizeMode="cover"
             style={styles.image}>
-            <Text style={styles.itemName}>{item.name}</Text>
+            <Pressable
+              onPress={() => {
+                navigation.navigate("Article");
+              }}>
+              <Text style={styles.itemName}>{item.name}</Text>
+            </Pressable>
           </ImageBackground>
         </View>
       )}

@@ -12,7 +12,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "../database/Firestore";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
-import Posts from "./Posts/Posts";
+import ExplorePosts from "./Posts/ExplorePosts";
+import CreatePosts from "./Posts/CreatePosts";
+import Article from "./Pages/Article";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Drawer({ navigation }) {
@@ -64,10 +67,29 @@ function Drawer({ navigation }) {
         }}
       />
       <Drawer.Screen
-        name="Posts"
-        component={Posts}
+        name="Explore"
+        component={ExplorePosts}
         options={{
-          drawerLabel: "Posts",
+          drawerLabel: "Explore",
+          headerStyle: {
+            backgroundColor: "transparent", //Set Header color
+          },
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 30 }}
+              onPress={() => {
+                onExit();
+              }}>
+              <Text>Logout</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Create Posts"
+        component={CreatePosts}
+        options={{
+          drawerLabel: "Create Posts",
           headerStyle: {
             backgroundColor: "transparent", //Set Header color
           },
