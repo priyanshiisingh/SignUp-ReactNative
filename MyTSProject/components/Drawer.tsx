@@ -32,7 +32,7 @@ function Drawer({ navigation }) {
         {
           text: "Confirm",
           onPress: () => {
-            auth.signOut();
+            auth.signOut().then(() => Alert.alert("User logged out!"));
             AsyncStorage.clear();
             navigation.goBack();
           },
