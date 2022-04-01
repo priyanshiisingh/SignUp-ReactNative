@@ -17,10 +17,36 @@ import { auth } from "../database/Firestore";
 import Home from "./Home";
 import Master from "./Master";
 import Profile from "./Profile";
+import Posts from "./Posts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Drawer({ navigation }) {
   const Drawer = createDrawerNavigator();
+
+  function onExit() {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => {
+            return null;
+          },
+        },
+        {
+          text: "Confirm",
+          onPress: () => {
+            auth.signOut();
+            AsyncStorage.clear();
+            navigation.goBack();
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  }
+
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen
@@ -35,27 +61,26 @@ function Drawer({ navigation }) {
             <TouchableOpacity
               style={{ marginRight: 30 }}
               onPress={() => {
-                Alert.alert(
-                  "Logout",
-                  "Are you sure you want to logout?",
-                  [
-                    {
-                      text: "Cancel",
-                      onPress: () => {
-                        return null;
-                      },
-                    },
-                    {
-                      text: "Confirm",
-                      onPress: () => {
-                        auth.signOut();
-                        AsyncStorage.clear();
-                        navigation.goBack();
-                      },
-                    },
-                  ],
-                  { cancelable: false }
-                );
+                onExit();
+              }}>
+              <Text>Logout</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Posts"
+        component={Posts}
+        options={{
+          drawerLabel: "Posts",
+          headerStyle: {
+            backgroundColor: "transparent", //Set Header color
+          },
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 30 }}
+              onPress={() => {
+                onExit();
               }}>
               <Text>Logout</Text>
             </TouchableOpacity>
@@ -74,27 +99,7 @@ function Drawer({ navigation }) {
             <TouchableOpacity
               style={{ marginRight: 30 }}
               onPress={() => {
-                Alert.alert(
-                  "Logout",
-                  "Are you sure you want to logout?",
-                  [
-                    {
-                      text: "Cancel",
-                      onPress: () => {
-                        return null;
-                      },
-                    },
-                    {
-                      text: "Confirm",
-                      onPress: () => {
-                        auth.signOut();
-                        AsyncStorage.clear();
-                        navigation.goBack();
-                      },
-                    },
-                  ],
-                  { cancelable: false }
-                );
+                onExit();
               }}>
               <Text>Logout</Text>
             </TouchableOpacity>

@@ -11,7 +11,7 @@ const TrendingCards = () => {
   return (
     <View>
       <Carousel
-        layout="default"
+        layout="tinder"
         layoutCardOffset={9}
         ref={isCarousel}
         data={Data.TrendingData}
@@ -46,7 +46,7 @@ const MusicCards = () => {
   return (
     <View>
       <Carousel
-        layout="default"
+        layout="tinder"
         layoutCardOffset={9}
         ref={isCarousel}
         data={Data.MusicData}
@@ -81,7 +81,7 @@ const MovieCards = () => {
   return (
     <View>
       <Carousel
-        layout="default"
+        layout="tinder"
         layoutCardOffset={9}
         ref={isCarousel}
         data={Data.MovieData}
@@ -116,7 +116,7 @@ const FoodCards = () => {
   return (
     <View>
       <Carousel
-        layout="default"
+        layout="tinder"
         layoutCardOffset={9}
         ref={isCarousel}
         data={Data.FoodData}

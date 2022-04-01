@@ -35,6 +35,7 @@ function Home({ navigation }) {
       <ScrollView style={styles.scrollView}>
         <View style={styles.view}>
           <Text style={styles.helloText}>Hello {Lname}!</Text>
+
           <Text style={styles.trendText}>Trending</Text>
           <TrendingCards />
           <Text style={styles.trendText}>Movies for you</Text>
