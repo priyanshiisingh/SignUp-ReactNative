@@ -12,7 +12,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "../database/Firestore";
 import Home from "./Home";
 import Profile from "./Profile";
-import Posts from "./Posts";
+import Posts from "./Posts/Posts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Drawer({ navigation }) {

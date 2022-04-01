@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#f8f9fa",
   },
   view: {
-    paddingRight: 30,
-    paddingLeft: 30,
-    paddingBottom: 30,
+    width: "100%",
+    padding: 30,
+    textAlign: "center",
   },
   text: {
     color: "black",
