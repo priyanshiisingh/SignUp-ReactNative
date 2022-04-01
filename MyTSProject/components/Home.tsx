@@ -10,10 +10,12 @@ import {
 import { auth } from "../database/Firestore";
 import Login from "./Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import TrendingCards from "./Carousel/TrendingCards";
-import MovieCards from "./Carousel/MovieCards";
-import MusicCards from "./Carousel/MusicCards";
-import FoodCards from "./Carousel/FoodCards";
+import {
+  TrendingCards,
+  MovieCards,
+  MusicCards,
+  FoodCards,
+} from "./Carousel/Cards";
 
 import Footer from "./Footer";
 

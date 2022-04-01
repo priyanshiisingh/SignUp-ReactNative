@@ -1,4 +1,4 @@
-export default Data = {
+const Data = {
   TrendingData: [
     {
       title: "Aenean leo",
@@ -95,3 +95,5 @@ export default Data = {
     },
   ],
 };
+
+export default Data;
