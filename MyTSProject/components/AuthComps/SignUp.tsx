@@ -11,7 +11,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../database/Firestore";
+import { auth } from "../../database/Firestore";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 

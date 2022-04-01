@@ -5,10 +5,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import Home from "./components/Home";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./components/AuthComps/Login";
+import SignUp from "./components/AuthComps/SignUp";
 import Drawer from "./components/Drawer";
-import Master from "./components/Master";
+import Master from "./components/AuthComps/Master";
 
 function Body() {
   return (
