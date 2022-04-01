@@ -8,14 +8,9 @@ import {
   Alert,
 } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-} from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "../database/Firestore";
 import Home from "./Home";
-import Master from "./Master";
 import Profile from "./Profile";
 import Posts from "./Posts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
