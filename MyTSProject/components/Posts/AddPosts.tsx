@@ -37,12 +37,17 @@ const AddPosts = () => {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <View style={styles.inputFields}>
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
+          <Button
+            title="Pick any image/video from camera roll"
+            onPress={pickImage}
+          />
           {image && (
-            <Image
-              source={{ uri: image }}
-              style={{ width: 200, height: 200 }}
-            />
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Image
+                source={{ uri: image }}
+                style={{ width: 250, height: 250 }}
+              />
+            </View>
           )}
 
           <TextInput
@@ -70,39 +75,23 @@ const styles = StyleSheet.create({
   subContainer: {
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 5,
-    borderColor: "black",
-    borderStyle: "solid",
-    borderWidth: 1,
     padding: 5,
     minHeight: 300,
     width: "95%",
   },
   inputFields: {
     justifyContent: "center",
-    borderRadius: 5,
-    borderColor: "black",
-    borderStyle: "solid",
-    borderWidth: 1,
     padding: 5,
     width: "100%",
     marginBottom: 20,
   },
-  imageField: {
-    justifyContent: "center",
-    borderRadius: 5,
-    borderColor: "black",
-    borderStyle: "solid",
-    borderWidth: 1,
-    padding: 5,
-    width: "100%",
-  },
   captionField: {
     justifyContent: "center",
     borderRadius: 5,
-    borderColor: "black",
+    borderColor: "grey",
     borderStyle: "solid",
     borderWidth: 1,
+    marginTop: 20,
     padding: 5,
     width: "100%",
   },
@@ -111,7 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 25,
     elevation: 4,
     width: "80%",
     backgroundColor: "#b7094c",

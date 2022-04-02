@@ -14,6 +14,7 @@ import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import ExplorePosts from "./Posts/ExplorePosts";
 import AddPosts from "./Posts/AddPosts";
+import AllPosts from "./Posts/AllPosts";
 import Article from "./Pages/Article";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -86,6 +87,25 @@ function Drawer({ navigation }) {
         }}
       />
       <Drawer.Screen
+        name="All Posts"
+        component={AllPosts}
+        options={{
+          drawerLabel: "All Posts",
+          headerStyle: {
+            backgroundColor: "transparent", //Set Header color
+          },
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 30 }}
+              onPress={() => {
+                onExit();
+              }}>
+              <Text>Logout</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="Add Posts"
         component={AddPosts}
         options={{
@@ -104,6 +124,7 @@ function Drawer({ navigation }) {
           ),
         }}
       />
+
       <Drawer.Screen
         name="Profile"
         component={Profile}
