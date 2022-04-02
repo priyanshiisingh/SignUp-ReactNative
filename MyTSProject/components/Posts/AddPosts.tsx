@@ -10,7 +10,7 @@ import {
   Image,
   Button,
 } from "react-native";
-import ImagePicker from "react-native-image-picker/src";
+import * as ImagePicker from "expo-image-picker";
 
 const AddPosts = () => {
   const [image, setImage] = React.useState(null);
@@ -44,6 +44,7 @@ const AddPosts = () => {
               style={{ width: 200, height: 200 }}
             />
           )}
+
           <TextInput
             placeholder="Add Caption"
             onChangeText={(UserCaption) => setCaption(UserCaption)}
