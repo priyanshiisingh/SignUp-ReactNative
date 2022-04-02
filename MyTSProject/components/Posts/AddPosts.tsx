@@ -11,8 +11,20 @@ import {
   Button,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { auth } from "../../database/Firestore";
 
-const AddPosts = () => {
+function AddPosts({ navigation }) {
+  const user = auth.currentUser;
+
+  // The user object has basic properties such as display name, email, etc.
+  const Lname = user.displayName;
+  const Lemail = user.email;
+
+  // The user's ID, unique to the Firebase project. Do NOT use
+  // this value to authenticate with your backend server, if
+  // you have one. Use User.getToken() instead.
+  const Luid = user.uid;
+
   const [image, setImage] = React.useState(null);
 
   const pickImage = async () => {
@@ -32,6 +44,7 @@ const AddPosts = () => {
   };
 
   const [caption, setCaption] = React.useState();
+  const [post, setPost] = React.useState();
 
   return (
     <View style={styles.container}>
@@ -63,7 +76,7 @@ const AddPosts = () => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

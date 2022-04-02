@@ -4,7 +4,9 @@ import { StyleSheet, Text, View, Alert } from "react-native";
 const Footer = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Footer</Text>
+      <Text style={styles.text}>
+        Made with ❤️ by Priyanshi{"\n"}for IWebCode.
+      </Text>
     </View>
   );
 };
@@ -19,7 +21,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
+    textAlign: "center",
     color: "white",
+    lineHeight: 20,
   },
 });
 

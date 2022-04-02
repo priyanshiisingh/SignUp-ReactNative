@@ -33,11 +33,7 @@ function Body() {
         component={Drawer}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="Article"
-        component={Article}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Article" component={Article} />
     </Stack.Navigator>
   );
 }
