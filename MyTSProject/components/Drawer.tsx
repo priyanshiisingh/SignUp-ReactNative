@@ -13,7 +13,7 @@ import { auth } from "../database/Firestore";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import ExplorePosts from "./Posts/ExplorePosts";
-import CreatePosts from "./Posts/CreatePosts";
+import AddPosts from "./Posts/AddPosts";
 import Article from "./Pages/Article";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -86,10 +86,10 @@ function Drawer({ navigation }) {
         }}
       />
       <Drawer.Screen
-        name="Create Posts"
-        component={CreatePosts}
+        name="Add Posts"
+        component={AddPosts}
         options={{
-          drawerLabel: "Create Posts",
+          drawerLabel: "Add Posts",
           headerStyle: {
             backgroundColor: "transparent", //Set Header color
           },
