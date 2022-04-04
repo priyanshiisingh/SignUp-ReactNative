@@ -7,11 +7,19 @@ import {
   Pressable,
   TouchableOpacity,
   Text,
+  Alert,
   Image,
   Button,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import { auth } from "../../database/Firestore";
+import { auth, db } from "../../database/Firestore";
+import {
+  getStorage,
+  uploadBytes,
+  ref,
+  getDownloadURL,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 function AddPosts({ navigation }) {
   const user = auth.currentUser;
@@ -36,15 +44,22 @@ function AddPosts({ navigation }) {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
+      const storage = getStorage();
+      const reference = ref(storage, Lname);
+
+      //convert image into array of bytes
+      const img = await fetch(result.uri);
+      const bytes = await img.blob();
+
+      await uploadBytesResumable(reference, bytes);
       setImage(result.uri);
     }
   };
 
+  console.log(image);
+
   const [caption, setCaption] = React.useState();
-  const [post, setPost] = React.useState();
 
   return (
     <View style={styles.container}>
@@ -70,7 +85,11 @@ function AddPosts({ navigation }) {
             style={styles.captionField}
           />
         </View>
-        <Pressable style={styles.button} onPress={() => {}}>
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            uploadImagetoStorage();
+          }}>
           <Text style={styles.buttonText}>POST</Text>
         </Pressable>
       </View>
