@@ -67,6 +67,7 @@ function AddPosts({ navigation }) {
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
           console.log("Upload is " + progress + "% done");
           switch (snapshot.state) {
             case "paused":
@@ -102,14 +103,8 @@ function AddPosts({ navigation }) {
         userName: Lname,
         userEmail: Lemail,
         caption: caption,
-        post: "",
+        image: uploadUrl,
       });
-
-      setTimeout(async () => {
-        await updateDoc(doc(db, "posts", resDoc.id), {
-          post: uploadUrl,
-        });
-      }, 2000);
 
       console.log(resDoc.id);
       Alert.alert("Submit Sucessfull");
