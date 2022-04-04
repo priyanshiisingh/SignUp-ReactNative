@@ -34,6 +34,9 @@ function AddPosts({ navigation }) {
   const Luid = user.uid;
 
   const [image, setImage] = React.useState(null);
+  const [uploadUrl, setUploadUrl] = React.useState();
+
+  const uploadPost = () => {};
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -45,19 +48,51 @@ function AddPosts({ navigation }) {
     });
 
     if (!result.cancelled) {
+      const filename = result.uri.substring(result.uri.lastIndexOf("/") + 1);
       const storage = getStorage();
-      const reference = ref(storage, Lname);
+      const reference = ref(storage, filename);
 
       //convert image into array of bytes
       const img = await fetch(result.uri);
       const bytes = await img.blob();
 
-      await uploadBytesResumable(reference, bytes);
+      //uploading image as bytes
+      const uploadTask = uploadBytesResumable(reference, bytes);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setUploadUrl(downloadURL);
+          });
+        }
+      );
       setImage(result.uri);
     }
   };
 
   console.log(image);
+  console.log(uploadUrl);
 
   const [caption, setCaption] = React.useState();
 
@@ -145,3 +180,11 @@ const styles = StyleSheet.create({
 });
 
 export default AddPosts;
+
+// () => {
+//   // Upload completed successfully, now we can get the download URL
+//   getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+//     console.log('File available at', downloadURL);
+//     setLoadedImage(downloadURL)
+//   });
+// }
