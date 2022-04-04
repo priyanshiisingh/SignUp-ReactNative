@@ -117,10 +117,7 @@ function AddPosts({ navigation }) {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <View style={styles.inputFields}>
-          <Button
-            title="Pick any image/video from camera roll"
-            onPress={pickImage}
-          />
+          <Button title="Pick image from camera roll" onPress={pickImage} />
           {image && (
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <Image

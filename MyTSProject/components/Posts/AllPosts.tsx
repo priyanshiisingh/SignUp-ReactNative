@@ -38,7 +38,7 @@ const CreatePosts = () => {
                 <View style={styles.user}>
                   <Text>{post.userName}</Text>
                 </View>
-                <View style={styles.topic}>
+                <View style={styles.caption}>
                   <Text>{post.caption}</Text>
                 </View>
                 <View style={styles.body}>
@@ -69,24 +69,23 @@ const styles = StyleSheet.create({
     padding: 5,
     maxHeight: 500,
     width: "95%",
+    marginBottom: 30,
+    borderColor: "grey",
+    borderWidth: 2,
+    borderStyle: "solid",
   },
   user: {
     justifyContent: "center",
-
     padding: 5,
-    height: "15%",
   },
-  topic: {
+  caption: {
     justifyContent: "center",
-
     padding: 5,
-    height: "15%",
   },
   body: {
     justifyContent: "center",
-
+    alignItems: "center",
     padding: 5,
-    height: "70%",
   },
 });
 
