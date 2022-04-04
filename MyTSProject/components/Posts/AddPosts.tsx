@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { auth, db } from "../../database/Firestore";
+
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import {
   getStorage,
   uploadBytes,
@@ -35,8 +37,7 @@ function AddPosts({ navigation }) {
 
   const [image, setImage] = React.useState(null);
   const [uploadUrl, setUploadUrl] = React.useState();
-
-  const uploadPost = () => {};
+  const [caption, setCaption] = React.useState();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -94,7 +95,28 @@ function AddPosts({ navigation }) {
   console.log(image);
   console.log(uploadUrl);
 
-  const [caption, setCaption] = React.useState();
+  const uploadPost = async () => {
+    try {
+      const resDoc = await addDoc(collection(db, "posts"), {
+        userid: Luid,
+        userName: Lname,
+        userEmail: Lemail,
+        caption: caption,
+        post: "",
+      });
+
+      setTimeout(async () => {
+        await updateDoc(doc(db, "posts", resDoc.id), {
+          post: uploadUrl,
+        });
+      }, 2000);
+
+      console.log(resDoc.id);
+      Alert.alert("Submit Sucessfull");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -123,7 +145,7 @@ function AddPosts({ navigation }) {
         <Pressable
           style={styles.button}
           onPress={() => {
-            uploadImagetoStorage();
+            uploadPost();
           }}>
           <Text style={styles.buttonText}>POST</Text>
         </Pressable>
