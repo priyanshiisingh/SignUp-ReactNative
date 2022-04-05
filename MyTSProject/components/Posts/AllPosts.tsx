@@ -13,17 +13,26 @@ import {
   getDocs,
   query,
   doc,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../../database/Firestore";
 
-const CreatePosts = () => {
+const AllPosts = () => {
   const [postings, setPostings] = useState([]);
 
   useEffect(() => {
-    const response = query(collection(db, "posts"));
+    const response = query(
+      collection(db, "posts"),
+      orderBy("createdAt", "desc")
+    );
 
     const unsubscribe = onSnapshot(response, (snapshot) => {
-      setPostings(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setPostings(
+        snapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      );
     });
     return () => unsubscribe();
   }, []);
@@ -32,9 +41,9 @@ const CreatePosts = () => {
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         {postings &&
-          postings.map((post) => {
+          postings.map((post, i) => {
             return (
-              <View style={styles.subContainer}>
+              <View style={styles.subContainer} key={i}>
                 <View style={styles.user}>
                   <Text>{post.userName}</Text>
                 </View>
@@ -89,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreatePosts;
+export default AllPosts;

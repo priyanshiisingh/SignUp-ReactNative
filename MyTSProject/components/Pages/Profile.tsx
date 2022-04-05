@@ -10,6 +10,13 @@ import {
 } from "react-native";
 import { auth } from "../../database/Firestore";
 import Footer from "../Footer";
+import {
+  collection,
+  onSnapshot,
+  getDocs,
+  query,
+  doc,
+} from "firebase/firestore";
 
 function Profile({ navigation }) {
   const user = auth.currentUser;
@@ -27,23 +34,25 @@ function Profile({ navigation }) {
       uri: "https://img.favpng.com/25/13/19/samsung-galaxy-a8-a8-user-login-telephone-avatar-png-favpng-dqKEPfX7hPbc6SMVUCteANKwj.jpg",
     };
     return (
-      <View style={styles.container}>
-        <View style={styles.cardContainer}>
-          <Image source={image} style={styles.image} />
-          <View style={styles.lineStyle} />
-          <Text style={styles.header}>{Lname}</Text>
-          <View style={{ marginTop: 10 }}>
-            <Text style={styles.text}>
-              <Text style={styles.subHeader}>Email:{"\n"}</Text>
-              {Lemail}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.subHeader}>User ID: </Text>
-              {Luid}
-            </Text>
+      <ScrollView style={{ flex: 1 }}>
+        <View style={styles.container}>
+          <View style={styles.cardContainer}>
+            <Image source={image} style={styles.image} />
+            <View style={styles.lineStyle} />
+            <Text style={styles.header}>{Lname}</Text>
+            <View style={{ marginTop: 10 }}>
+              <Text style={styles.text}>
+                <Text style={styles.subHeader}>Email:{"\n"}</Text>
+                {Lemail}
+              </Text>
+              <Text style={styles.text}>
+                <Text style={styles.subHeader}>User ID: </Text>
+                {Luid}
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   } else {
     console.log("Invalid entry.");
@@ -52,7 +61,7 @@ function Profile({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },

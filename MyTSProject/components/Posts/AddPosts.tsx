@@ -14,7 +14,13 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import { auth, db } from "../../database/Firestore";
 
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  doc,
+  updateDoc,
+  Timestamp,
+} from "firebase/firestore";
 import {
   getStorage,
   uploadBytes,
@@ -96,6 +102,9 @@ function AddPosts({ navigation }) {
   console.log(image);
   console.log(uploadUrl);
 
+  const timeObj = Timestamp.now().toDate();
+  console.log(timeObj);
+
   const uploadPost = async () => {
     try {
       const resDoc = await addDoc(collection(db, "posts"), {
@@ -104,6 +113,7 @@ function AddPosts({ navigation }) {
         userEmail: Lemail,
         caption: caption,
         image: uploadUrl,
+        createdAt: timeObj,
       });
 
       console.log(resDoc.id);
@@ -194,11 +204,3 @@ const styles = StyleSheet.create({
 });
 
 export default AddPosts;
-
-// () => {
-//   // Upload completed successfully, now we can get the download URL
-//   getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//     console.log('File available at', downloadURL);
-//     setLoadedImage(downloadURL)
-//   });
-// }
