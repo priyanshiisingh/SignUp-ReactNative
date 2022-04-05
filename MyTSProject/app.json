@@ -1,34 +1,35 @@
 {
-  "expo": {
-    "name": "MyTSProject",
-    "slug": "reactnativeproj",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "description": "React Native app, sign up and sign in. Logged in user can create posts, explore other users post.",
-    "githubUrl": "https://github.com/priyanshiisingh/SignUp-ReactNative"
-  }
+    "expo": {
+        "name": "MyTSProject",
+        "slug": "reactnativeproj",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "supportsTablet": true,
+            "googleServicesFile": "./GoogleService-Info.plist"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#FFFFFF"
+            },
+            "googleServicesFile": "./google-services.json"
+        },
+        "plugins": ["@react-native-google-signin/google-signin"],
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "description": "React Native app, sign up and sign in. Logged in user can create posts, explore other users post.",
+        "githubUrl": "https://github.com/priyanshiisingh/SignUp-ReactNative"
+    }
 }
