@@ -16,6 +16,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "../../database/Firestore";
+import Footer from "../Footer";
 
 const AllPosts = () => {
   const [postings, setPostings] = useState([]);
@@ -61,6 +62,7 @@ const AllPosts = () => {
             );
           })}
       </View>
+      <Footer />
     </ScrollView>
   );
 };
@@ -73,6 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
+    marginTop: 30,
   },
   subContainer: {
     padding: 5,

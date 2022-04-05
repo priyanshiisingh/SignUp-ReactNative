@@ -61,9 +61,6 @@ function Profile({ navigation }) {
       return () => unsubscribe();
     }, []);
 
-    const image = {
-      uri: "https://img.favpng.com/25/13/19/samsung-galaxy-a8-a8-user-login-telephone-avatar-png-favpng-dqKEPfX7hPbc6SMVUCteANKwj.jpg",
-    };
     return (
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.container}>
@@ -103,6 +100,7 @@ function Profile({ navigation }) {
               );
             })}
         </View>
+        <Footer />
       </ScrollView>
     );
   } else {
