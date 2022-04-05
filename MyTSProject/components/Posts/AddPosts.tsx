@@ -44,6 +44,8 @@ function AddPosts({ navigation }) {
   const [image, setImage] = React.useState(null);
   const [uploadUrl, setUploadUrl] = React.useState();
   const [caption, setCaption] = React.useState();
+  const [uploading, setUploading] = React.useState(false);
+  const [transferred, setTransferred] = React.useState(0);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -71,10 +73,12 @@ function AddPosts({ navigation }) {
         (snapshot) => {
           // Observe state change events such as progress, pause, and resume
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploading(true);
+          setTransferred(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
 
-          console.log("Upload is " + progress + "% done");
+          console.log("Upload is " + transferred + "% done");
           switch (snapshot.state) {
             case "paused":
               console.log("Upload is paused");
@@ -137,6 +141,12 @@ function AddPosts({ navigation }) {
             </View>
           )}
 
+          {uploading && (
+            <Text style={styles.percentageField}>
+              Upload is {transferred}% done{" "}
+            </Text>
+          )}
+
           <TextInput
             placeholder="Add Caption"
             onChangeText={(UserCaption) => setCaption(UserCaption)}
@@ -182,6 +192,12 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     borderStyle: "solid",
     borderWidth: 1,
+    marginTop: 20,
+    padding: 5,
+    width: "100%",
+  },
+  percentageField: {
+    justifyContent: "center",
     marginTop: 20,
     padding: 5,
     width: "100%",
