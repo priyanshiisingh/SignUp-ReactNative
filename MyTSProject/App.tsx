@@ -9,6 +9,7 @@ import SignUp from "./components/AuthComps/SignUp";
 import Drawer from "./components/Drawer";
 import Master from "./components/AuthComps/Master";
 import Article from "./components/Pages/Article";
+import { LogBox } from "react-native";
 
 function Body() {
   return (
@@ -39,6 +40,7 @@ function Body() {
 }
 
 export default function App() {
+  LogBox.ignoreLogs(["Setting a timer for a long period of time"]);
   return (
     <NavigationContainer>
       <Body />
