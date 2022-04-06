@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 // //firebase
 // import { auth, provider } from "../../database/Firestore";
