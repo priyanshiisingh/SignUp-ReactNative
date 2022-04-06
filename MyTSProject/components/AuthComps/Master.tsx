@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import Login from "./Login";
 import SignUp from "./SignUp";
-import GoogleAuth from "./GoogleAuth";
 
 import { auth, provider } from "../../database/Firestore";
 
