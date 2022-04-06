@@ -1,11 +1,11 @@
-// import React from "react";
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-//   Pressable,
-//   ImageBackground,
-// } from "react-native";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ImageBackground,
+} from "react-native";
 
 // //firebase
 // import { auth, provider } from "../../database/Firestore";
@@ -34,42 +34,42 @@ function GoogleAuth({ navigation }) {
   //     }
   //   }, [response]);
   //   // goggle signin (end)
-  //   return (
-  //     <View style={styles.container}>
-  //       <Pressable
-  //         disabled={!request}
-  //         style={styles.googleButton}
-  //         onPress={() => {
-  //           promptAsync();
-  //         }}>
-  //         <Text style={styles.buttonText}>Sign In with Google</Text>
-  //       </Pressable>
-  //     </View>
-  //   );
+  return (
+    <View style={styles.container}>
+      <Pressable
+        //   disabled={!request}
+        style={styles.googleButton}
+        onPress={() => {
+          // promptAsync();
+        }}>
+        <Text style={styles.buttonText}>Sign In with Google</Text>
+      </Pressable>
+    </View>
+  );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   googleButton: {
-//     alignItems: "center",
-//     justifyContent: "center",
-//     paddingVertical: 12,
-//     paddingHorizontal: 32,
-//     borderRadius: 25,
-//     elevation: 4,
-//     width: "80%",
-//     backgroundColor: "#4285F4",
-//     marginBottom: 10,
-//   },
-//   buttonText: {
-//     color: "white",
-//     textAlign: "center",
-//     fontSize: 18,
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  googleButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+
+    elevation: 4,
+    width: "80%",
+    backgroundColor: "#4285F4",
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 18,
+  },
+});
 
 export default GoogleAuth;
