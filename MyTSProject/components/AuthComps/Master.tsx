@@ -1,3 +1,4 @@
+import React from "react";
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -9,6 +10,8 @@ import {
 } from "react-native";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import GoogleAuth from "./GoogleAuth";
+
 import { auth, provider } from "../../database/Firestore";
 
 export default function Master({ navigation }) {
@@ -33,6 +36,13 @@ export default function Master({ navigation }) {
         }}>
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>
+      <Pressable
+        style={styles.googleButton}
+        onPress={() => {
+          navigation.navigate("GoogleAuth");
+        }}>
+        <Text style={styles.buttonText}>SignIn with Google</Text>
+      </Pressable>
     </ImageBackground>
   );
 }
@@ -52,6 +62,17 @@ const styles = StyleSheet.create({
     elevation: 4,
     width: "80%",
     backgroundColor: "#b7094c",
+    marginBottom: 10,
+  },
+  googleButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 25,
+    elevation: 4,
+    width: "80%",
+    backgroundColor: "#4285F4",
     marginBottom: 10,
   },
   buttonText: {

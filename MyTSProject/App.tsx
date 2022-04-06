@@ -9,6 +9,8 @@ import SignUp from "./components/AuthComps/SignUp";
 import Drawer from "./components/Drawer";
 import Master from "./components/AuthComps/Master";
 import Article from "./components/Pages/Article";
+import GoogleAuth from "./components/AuthComps/GoogleAuth";
+
 import { LogBox } from "react-native";
 
 function Body() {
@@ -35,6 +37,7 @@ function Body() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Article" component={Article} />
+      <Stack.Screen name="GoogleAuth" component={GoogleAuth} />
     </Stack.Navigator>
   );
 }
