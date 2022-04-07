@@ -1,34 +1,39 @@
 {
-    "expo": {
-        "name": "MyTSProject",
-        "slug": "reactnativeproj",
-        "version": "1.0.0",
-        "orientation": "portrait",
-        "icon": "./assets/icon.png",
-        "splash": {
-            "image": "./assets/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
-        },
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "assetBundlePatterns": ["**/*"],
-        "scheme": "myapp",
-        "ios": {
-            "supportsTablet": true
-        },
-        "android": {
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
-                "backgroundColor": "#FFFFFF"
-            }
-        },
-        "plugins": ["@react-native-google-signin/google-signin"],
-        "web": {
-            "favicon": "./assets/favicon.png"
-        },
-        "description": "React Native app, sign up and sign in. Logged in user can create posts, explore other users post.",
-        "githubUrl": "https://github.com/priyanshiisingh/SignUp-ReactNative"
-    }
+  "expo": {
+    "name": "ReactNativeAuth",
+    "slug": "reactnativeproj",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "scheme": "myapp",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.priyanshiisingh18.reactnativeproj"
+    },
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "React Native app, sign up and sign in. Logged in user can create posts, explore other users post.",
+    "githubUrl": "https://github.com/priyanshiisingh/SignUp-ReactNative"
+  }
 }
