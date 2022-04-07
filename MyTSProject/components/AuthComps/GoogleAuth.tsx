@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
 
 //firebase
 import { auth, provider } from "../../database/Firestore";
@@ -33,6 +33,7 @@ function GoogleAuth({ navigation }) {
       // Sign in with credential from the Google user.
       signInWithCredential(auth, credential)
         .then(() => {
+          Alert.alert("User Signed In!");
           navigation.navigate("Drawer");
         })
         .catch((error) => {
