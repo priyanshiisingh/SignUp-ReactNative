@@ -1,40 +1,60 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 
-// //firebase
-// import { auth, provider } from "../../database/Firestore";
-// import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
+//firebase
+import { auth, provider } from "../../database/Firestore";
+import {
+  GoogleAuthProvider,
+  signInWithCredential,
+  signInWithRedirect,
+} from "firebase/auth";
 
-// //Goggle signin
-// import * as WebBrowser from "expo-web-browser";
-// import * as Google from "expo-auth-session/providers/google";
+//Goggle signin
+import * as WebBrowser from "expo-web-browser";
+import * as Google from "expo-auth-session/providers/google";
 
-// WebBrowser.maybeCompleteAuthSession();
+WebBrowser.maybeCompleteAuthSession();
 
 function GoogleAuth({ navigation }) {
-  //gogle signin (start)
-  //   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-  //     expoClientId:
-  //       "144301622420-v4t51889vkrevcm9481v6hi0fnn9pvgt.apps.googleusercontent.com",
-  //     clientId:
-  //       "144301622420-f62n4e4km4dta3je69mapjmk2da7r1s4.apps.googleusercontent.com",
-  //   });
-  //   React.useEffect(() => {
-  //     if (response?.type === "success") {
-  //       const { id_token } = response.params;
-  //       const provider = new GoogleAuthProvider();
-  //       const credential = provider.credential(id_token);
-  //       signInWithCredential(auth, credential);
-  //     }
-  //   }, [response]);
-  //   // goggle signin (end)
+  // gogle signin (start)
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    expoClientId:
+      "144301622420-v4t51889vkrevcm9481v6hi0fnn9pvgt.apps.googleusercontent.com",
+    webClientId:
+      "144301622420-f62n4e4km4dta3je69mapjmk2da7r1s4.apps.googleusercontent.com",
+  });
+  React.useEffect(() => {
+    if (response?.type === "success") {
+      const { id_token } = response.params;
+
+      const credential = GoogleAuthProvider.credential(id_token);
+      console.log(credential);
+
+      // Sign in with credential from the Google user.
+      signInWithCredential(auth, credential)
+        .then(() => {
+          navigation.navigate("Drawer");
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.email;
+          // The credential that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+        });
+    }
+  }, [response]);
+  // goggle signin (end)
   return (
     <View style={styles.container}>
       <Pressable
-        //   disabled={!request}
+        disabled={!request}
         style={styles.googleButton}
         onPress={() => {
-          // promptAsync();
+          promptAsync();
         }}>
         <Text style={styles.buttonText}>Sign In with Google</Text>
       </Pressable>
