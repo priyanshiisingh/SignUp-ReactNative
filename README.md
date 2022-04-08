@@ -5,4 +5,4 @@ Scan QR to run app on ExpoGo : https://expo.dev/@priyanshiisingh18/reactnativepr
 
 Google Drive link (for app apk) : https://drive.google.com/drive/folders/1BidJ3QsIZkfWv4ABqsx7Lo5uEv5xd8Yo?usp=sharing
 
-Documentation : https://docs.google.com/document/d/1C5G5D5BJGIpIvkU2b2eKh33ZGq3b6ag0EE3CxdGLhzE/edit?usp=sharing (edited) 
+Documentation : https://docs.google.com/document/d/1C5G5D5BJGIpIvkU2b2eKh33ZGq3b6ag0EE3CxdGLhzE/edit?usp=sharing  
